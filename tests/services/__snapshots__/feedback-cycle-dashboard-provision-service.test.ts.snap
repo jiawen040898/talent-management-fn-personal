@@ -390,3 +390,13 @@ exports[`FeedbackCycleDashboardProvisionService provisionFeedbackCycleDashboard 
 `;
 
 exports[`FeedbackCycleDashboardProvisionService waitForFeedbackCycleToCloseOnBq should throw error if feedback cycle is not closed on BQ 1`] = `[Error: Failed to get closed feedback cycle]`;
+
+exports[`FeedbackCycleDashboardProvisionService waitForFeedbackCycleToCloseOnBq should throw error if feedback cycle is not closed on BQ: errorDetails 1`] = `
+{
+  "error": [Error],
+  "error_codes": [
+    "failed_to_get_closed_feedback_cycle",
+  ],
+  "feedbackCycleId": "test-id",
+}
+`;
