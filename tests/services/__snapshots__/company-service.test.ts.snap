@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompanyService getActiveCompaniesSubscribedToLearningAndByTimezone should filter and return companies correctly should filter and return companies data 1`] = `
+{
+  "actual": [
+    {
+      "id": 5,
+      "is_deleted": false,
+      "localDate": Any<String>,
+      "locales": [
+        {
+          "is_default": true,
+          "locale": "en-US",
+        },
+      ],
+      "name": "Bitcoin Incorporation",
+      "products": [
+        {
+          "module": "talent_management",
+        },
+        {
+          "module": "talent_acquisition",
+        },
+        {
+          "module": "talent_learning",
+        },
+      ],
+      "status": "active",
+      "timezone": "Japan",
+    },
+  ],
+}
+`;
+
+exports[`CompanyService getCompanyLookup should get company lookup data from cache should return company lookup data 1`] = `
+[
+  [
+    "COMPANY_LOOKUP",
+  ],
+]
+`;
+
+exports[`CompanyService getCompanyLookup should get data from identity endpoint should return company lookup data 1`] = `
+[
+  {
+    "id": 5,
+    "is_deleted": false,
+    "locales": [
+      {
+        "is_default": true,
+        "locale": "en-US",
+      },
+    ],
+    "name": "Bitcoin Incorporation",
+    "products": [
+      {
+        "module": "talent_management",
+      },
+      {
+        "module": "talent_acquisition",
+      },
+      {
+        "module": "talent_learning",
+      },
+    ],
+    "status": "active",
+    "timezone": "Japan",
+  },
+  {
+    "id": 1471,
+    "is_deleted": true,
+    "locales": [
+      {
+        "is_default": true,
+        "locale": "en-US",
+      },
+    ],
+    "name": "Blick, Nikolaus and Kuhn updated",
+    "products": [
+      {
+        "module": "talent_acquisition",
+      },
+      {
+        "module": "talent_management",
+      },
+    ],
+    "status": "disabled",
+    "timezone": "Asia/Kuala_Lumpur",
+  },
+  {
+    "id": 352,
+    "is_deleted": false,
+    "locales": [
+      {
+        "is_default": true,
+        "locale": "en-US",
+      },
+    ],
+    "name": "Herman Thiel",
+    "products": [
+      {
+        "module": "talent_acquisition",
+      },
+      {
+        "module": "talent_management",
+      },
+    ],
+    "status": "disabled",
+    "timezone": "Asia/Kuala_Lumpur",
+  },
+]
+`;

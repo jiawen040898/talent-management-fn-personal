@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`feedbackCycleRevieweeRecommendationService handleRecommendationEndedRequest 1`] = `
+{
+  "id": Anything,
+  "recommendation_result_meta": {
+    "generated_at": Any<String>,
+    "status": "ready",
+  },
+}
+`;
+
+exports[`feedbackCycleRevieweeRecommendationService handleRecommendationEndedRequest 2`] = `
+{
+  "company_id": 5,
+  "data": {
+    "call_to_action": {
+      "url": StringMatching /\\^https:\\\\/\\\\/local-employee\\.pulsifi\\.me\\\\//,
+    },
+    "company": {
+      "name": "Bitcoin Incorporation",
+    },
+    "email_sender": {
+      "name": "Bitcoin Incorporation",
+    },
+    "receiver": {
+      "email": "employee0@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 0",
+      "full_name": "First Name 0 Last Name 0",
+      "id": Anything,
+      "last_name": "Last Name 0",
+      "user_account_id": 100,
+    },
+  },
+  "event_id": Anything,
+  "event_type": "talent_management_feedback_reviewee_recommendation_completed",
+  "user_account_id": 100,
+}
+`;
+
+exports[`feedbackCycleRevieweeRecommendationService handleRecommendationGenerationRequest 1`] = `
+{
+  "results": {
+    "feedback_cycle_reviewee_id": Anything,
+    "id": Anything,
+  },
+}
+`;
+
+exports[`feedbackCycleRevieweeRecommendationService handleRecommendationGenerationRequest 2`] = `
+{
+  "id": Anything,
+}
+`;
+
+exports[`feedbackCycleRevieweeRecommendationService handleRecommendationGenerationRequest 3`] = `
+{
+  "results": [
+    {
+      "action": [
+        {
+          "description": "some explanation",
+          "id": Anything,
+          "title": "some action",
+        },
+      ],
+      "id": Anything,
+      "resource_book": [
+        {
+          "author": [
+            "some author",
+          ],
+          "id": Anything,
+          "image_url": "www.image.url",
+          "redirect_url": "www.info.url",
+          "title": "some title",
+        },
+      ],
+      "resource_course": [
+        {
+          "author": [
+            "some author",
+          ],
+          "id": Anything,
+          "image_url": "www.image.url",
+          "redirect_url": "www.info.url",
+          "title": "some title",
+        },
+      ],
+      "skill": null,
+    },
+  ],
+}
+`;
+
+exports[`feedbackCycleRevieweeRecommendationService handleRecommendationProcessRequest 1`] = `
+{
+  "results": [
+    {
+      "feedback_cycle_reviewee_id": Anything,
+      "id": Anything,
+      "question_description": "Generates creative ideas and alternative solutions to overcome challenges.",
+      "question_title": "Critical Thinking",
+      "recommendation_dimension": "development",
+      "score": "5.0000000",
+    },
+  ],
+}
+`;

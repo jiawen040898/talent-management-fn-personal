@@ -1,0 +1,24 @@
+name: Unit Test Check
+on:
+    pull_request:
+        branches:
+            - master
+
+permissions:
+    actions: read
+    checks: write
+    contents: read
+
+jobs:
+    unit-test:
+        name: Unit Test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Run unit-test composite action
+              uses: Pulsifi/github-template/unit-test-v4@master
+              with:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  GENERATE_TEST_REPORT: true

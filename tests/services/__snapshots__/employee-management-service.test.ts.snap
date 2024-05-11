@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmployeeManagementService getGoalAndTaskDueListByCompany should return all employees task and goals due list 1`] = `
+[
+  EmployeeTaskAndGoalDue {
+    "company_id": 5,
+    "due_date": "2022-11-26 00:00:00.000",
+    "due_type": "in 3 days",
+    "employee_email": "peterl@gmail.com",
+    "employee_first_name": "Peter",
+    "employee_goals_due_count": 1,
+    "employee_id": "7d7c0426-01a6-4577-ab63-83bf2e3c7655",
+    "employee_tasks_due_count": 1,
+    "employee_user_account_id": 13,
+  },
+  EmployeeTaskAndGoalDue {
+    "company_id": 5,
+    "due_date": "2022-11-23 00:00:00.000",
+    "due_type": "today",
+    "employee_email": "jasonl@gmail.com",
+    "employee_first_name": "Jason",
+    "employee_goals_due_count": 1,
+    "employee_id": "ed071ebf-6f7d-47d1-9b0b-52005a5cf778",
+    "employee_tasks_due_count": 1,
+    "employee_user_account_id": 25,
+  },
+]
+`;

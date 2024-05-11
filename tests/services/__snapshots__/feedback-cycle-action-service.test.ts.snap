@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeedbackCycleActionService approve manager nomination with reviewee ready for feedback 1`] = `
+{
+  "company_id": 5,
+  "data": {
+    "call_to_action": {
+      "url": StringMatching /\\^https:\\\\/\\\\/local-employee\\.pulsifi\\.me\\\\//,
+    },
+    "company": {
+      "name": "Bitcoin Incorporation",
+    },
+    "cycle": {
+      "close_date": Anything,
+      "feedback_submission_deadline": Anything,
+      "id": Anything,
+      "name": "Cycle Name 2",
+      "nomination_approval_deadline": Anything,
+      "nomination_submission_deadline": Anything,
+      "start_date": Anything,
+    },
+    "email_recipient": {
+      "email": "employee9@test.pulsifi.me",
+      "name": "First Name 9 Last Name 9",
+    },
+    "email_sender": {
+      "name": "Bitcoin Incorporation",
+    },
+    "manager": {
+      "email": "employee9@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 9",
+      "full_name": "First Name 9 Last Name 9",
+      "last_name": "Last Name 9",
+      "user_account_id": 109,
+    },
+    "receiver": {
+      "email": "employee11@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 11",
+      "full_name": "First Name 11 Last Name 11",
+      "id": Anything,
+      "last_name": "Last Name 11",
+      "user_account_id": 111,
+    },
+    "total_nomination": 2,
+  },
+  "event_id": Anything,
+  "event_type": "talent_management_feedback_manager_nomination_auto_approved",
+  "user_account_id": 109,
+}
+`;
+
+exports[`FeedbackCycleActionService start cycle with reviewee ready for feedback 1`] = `
+{
+  "company_id": 5,
+  "data": {
+    "call_to_action": {
+      "url": StringMatching /\\^https:\\\\/\\\\/local-employee\\.pulsifi\\.me\\\\//,
+    },
+    "company": {
+      "name": "Bitcoin Incorporation",
+    },
+    "cycle": {
+      "close_date": Anything,
+      "feedback_submission_deadline": Anything,
+      "id": Anything,
+      "name": "Cycle Name 1",
+      "nomination_approval_deadline": Anything,
+      "nomination_submission_deadline": Anything,
+      "start_date": Anything,
+    },
+    "email_recipient": {
+      "email": "employee6@test.pulsifi.me",
+      "name": "First Name 6 Last Name 6",
+    },
+    "email_sender": {
+      "name": "Bitcoin Incorporation",
+    },
+    "email_template": {
+      "body_in_html": "<p>Hello, this is a feedback self invite </p>",
+      "subject": "You are invite to submit self feedback",
+    },
+    "provider": {
+      "email": "employee7@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 7",
+      "full_name": "First Name 7 Last Name 7",
+      "id": Anything,
+      "last_name": "Last Name 7",
+      "user_account_id": 107,
+    },
+    "receiver": {
+      "email": "employee6@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 6",
+      "full_name": "First Name 6 Last Name 6",
+      "id": Anything,
+      "last_name": "Last Name 6",
+      "user_account_id": 106,
+    },
+  },
+  "event_id": Anything,
+  "event_type": "talent_management_feedback_reviewee_response_requested",
+  "user_account_id": 107,
+}
+`;
+
+exports[`FeedbackCycleActionService start cycle with reviewee ready for nomination 1`] = `
+{
+  "company_id": 5,
+  "data": {
+    "call_to_action": {
+      "url": StringMatching /\\^https:\\\\/\\\\/local-employee\\.pulsifi\\.me\\\\//,
+    },
+    "company": {
+      "name": "Bitcoin Incorporation",
+    },
+    "cycle": {
+      "close_date": Anything,
+      "feedback_submission_deadline": Anything,
+      "id": Anything,
+      "name": "Cycle Name 0",
+      "nomination_approval_deadline": Anything,
+      "nomination_submission_deadline": Anything,
+      "start_date": Anything,
+    },
+    "email_recipient": {
+      "email": "employee0@test.pulsifi.me",
+      "name": "First Name 0 Last Name 0",
+    },
+    "email_sender": {
+      "name": "Bitcoin Incorporation",
+    },
+    "manager": {
+      "email": "employee5@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 5",
+      "full_name": "First Name 5 Last Name 5",
+      "last_name": "Last Name 5",
+      "user_account_id": 105,
+    },
+    "receiver": {
+      "email": "employee0@test.pulsifi.me",
+      "employee_id": Anything,
+      "first_name": "First Name 0",
+      "full_name": "First Name 0 Last Name 0",
+      "id": Anything,
+      "last_name": "Last Name 0",
+      "user_account_id": 100,
+    },
+    "total_nomination": 0,
+  },
+  "event_id": Anything,
+  "event_type": "talent_management_feedback_nomination_requested",
+  "user_account_id": 100,
+}
+`;

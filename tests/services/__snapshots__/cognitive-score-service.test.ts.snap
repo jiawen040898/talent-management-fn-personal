@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CognitiveScoreService getCognitiveScores should return empty cognitive score outcome 1`] = `[]`;
+
+exports[`CognitiveScoreService getCognitiveScores should return expected cognitive score outcome 1`] = `
+[
+  {
+    "score": 13.043478260869565,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "numeric",
+        "domain_percentile": null,
+        "domain_score": 0.13043478260869565,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_type": "reasoning_numeric",
+  },
+  {
+    "score": 26.666666666666668,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "verbal",
+        "domain_percentile": null,
+        "domain_score": 0.26666666666666666,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_type": "reasoning_verbal",
+  },
+  {
+    "score": 27.77777777777778,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "logical",
+        "domain_percentile": null,
+        "domain_score": 0.2777777777777778,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_type": "reasoning_logical",
+  },
+  {
+    "score": 22.49597423510467,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "reasoning_average",
+        "domain_percentile": null,
+        "domain_score": 0.22495974235104668,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_type": "reasoning_average",
+  },
+]
+`;
+
+exports[`CognitiveScoreService getCognitiveScores should throw error when assessment questionnaire framework type is invalid 1`] = `"No cognitive score type found for work_interest from assessment questionnaire framework."`;
+
+exports[`CognitiveScoreService processReasoningAverage should return empty outcome for invalid participant id and empty current assessment 1`] = `
+{
+  "score": 0,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": "reasoning_average",
+      "domain_percentile": null,
+      "domain_score": 0,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_average",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningAverage should return expected reasoning average score when employee score do not have any assessment completed before 1`] = `
+{
+  "score": 22.49597423510467,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": "reasoning_average",
+      "domain_percentile": null,
+      "domain_score": 0.22495974235104668,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_average",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningAverage should return expected reasoning average score when employee score has assessment completed before 1`] = `
+{
+  "score": 24.38003220611916,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": "reasoning_average",
+      "domain_percentile": null,
+      "domain_score": 0.24380032206119162,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_average",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningLogical should return empty outcome for invalid assessment type 1`] = `
+{
+  "score": 0,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": undefined,
+      "domain_percentile": null,
+      "domain_score": 0,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_logical",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningLogical should return reasoning logic score 1`] = `
+{
+  "score": 27.77777777777778,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": "logical",
+      "domain_percentile": null,
+      "domain_score": 0.2777777777777778,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_logical",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningNumeric should return empty outcome for invalid assessment type 1`] = `
+{
+  "score": 0,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": undefined,
+      "domain_percentile": null,
+      "domain_score": 0,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_numeric",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningNumeric should return reasoning numeric score 1`] = `
+{
+  "score": 13.043478260869565,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": "numeric",
+      "domain_percentile": null,
+      "domain_score": 0.13043478260869565,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_numeric",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningVerbal should return empty outcome for invalid assessment type 1`] = `
+{
+  "score": 0,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": undefined,
+      "domain_percentile": null,
+      "domain_score": 0,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_verbal",
+}
+`;
+
+exports[`CognitiveScoreService processReasoningVerbal should return reasoning verbal score 1`] = `
+{
+  "score": 26.666666666666668,
+  "score_dimension": 0,
+  "score_outcome": {
+    "cognitive_result": {
+      "domain_alias": "verbal",
+      "domain_percentile": null,
+      "domain_score": 0.26666666666666666,
+      "ingredient_weightage": null,
+    },
+  },
+  "score_type": "reasoning_verbal",
+}
+`;

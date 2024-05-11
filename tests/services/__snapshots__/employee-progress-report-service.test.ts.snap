@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmployeeProgressReportService handleEmployeeProgressReportByManager should send report to notification queue 1`] = `
+[
+  [
+    {
+      "clientLibraryConfig": {},
+      "projectId": "data-sandbox-warehouse",
+      "region": "asia-southeast1",
+    },
+    "
+        SELECT employee_id, 
+          name, 
+          (IFNULL(alltime_goal_overdue, 0) + IFNULL(alltime_action_overdue, 0)) AS overdue_count, 
+          (IFNULL(weekly_number_of_new_goal_created, 0) + IFNULL(weekly_number_of_new_action_item_created, 0)) AS new_count,
+          (IFNULL(weekly_goal_completed, 0) + IFNULL(weekly_action_completed, 0)) AS completed_count
+          FROM \`{{project_id}}.product_dept_talent_mgmt{{region_postfix}}.lxp_email_notification\`
+          WHERE
+          company_id = @company_id
+            AND manager_employee_id = @manager_employee_id
+            AND is_deleted = false
+          ORDER BY overdue_count DESC, name ASC
+          LIMIT 5
+    ",
+    {
+      "company_id": 5,
+      "manager_employee_id": "c77021a7-cb4f-466c-9f51-b7cd73eaeecf",
+    },
+  ],
+]
+`;
+
+exports[`EmployeeProgressReportService handleEmployeeProgressReportFromCronJob should send a list of sqs request per manager from company 1`] = `
+{
+  "content": [
+    {
+      "company_id": 5,
+      "data": {
+        "company_id": 5,
+        "company_is_live": false,
+        "company_name": "Bitcoin Incorporation",
+        "manager_email": "joshborbon@getnada.com",
+        "manager_employee_id": "dd394bf0-5d0d-44ce-adf4-6e500417f645",
+        "manager_first_name": "Josh",
+        "manager_name": "Josh Borbon",
+        "manager_user_account_id": 11973,
+        "total_action_completed": 16,
+        "total_action_overdue": 12,
+        "total_goal_completed": 9,
+        "total_goal_overdue": 6,
+        "total_new_action": 9,
+        "total_new_goal": 14,
+      },
+      "event_id": Any<String>,
+      "event_type": "talent_management_handling_manager_weekly_progress",
+      "user_account_id": 0,
+    },
+    {
+      "company_id": 5,
+      "data": {
+        "company_id": 5,
+        "company_is_live": false,
+        "company_name": "Bitcoin Incorporation",
+        "manager_email": "greatmanager@getnada.com",
+        "manager_employee_id": "c863d0fa-7fc7-4f88-96cd-9d0405224835",
+        "manager_first_name": "Jay",
+        "manager_name": "Jay Manager",
+        "manager_user_account_id": 13282,
+        "total_action_completed": 0,
+        "total_action_overdue": 10,
+        "total_goal_completed": 0,
+        "total_goal_overdue": 11,
+        "total_new_action": 4,
+        "total_new_goal": 6,
+      },
+      "event_id": Any<String>,
+      "event_type": "talent_management_handling_manager_weekly_progress",
+      "user_account_id": 0,
+    },
+    {
+      "company_id": 5,
+      "data": {
+        "company_id": 5,
+        "company_is_live": false,
+        "company_name": "Bitcoin Incorporation",
+        "manager_email": "pulsifimanager01@getnada.com",
+        "manager_employee_id": "eae5cf89-996c-43e8-b9e2-edd72e989978",
+        "manager_first_name": "Anna",
+        "manager_name": "Anna Hong",
+        "manager_user_account_id": 12181,
+        "total_action_completed": 2,
+        "total_action_overdue": 5,
+        "total_goal_completed": 0,
+        "total_goal_overdue": 2,
+        "total_new_action": 4,
+        "total_new_goal": 3,
+      },
+      "event_id": Any<String>,
+      "event_type": "talent_management_handling_manager_weekly_progress",
+      "user_account_id": 0,
+    },
+  ],
+}
+`;
+
+exports[`EmployeeProgressReportService handleEmployeeProgressReportFromCronJob should send a list of sqs request per manager from company 2`] = `
+[
+  [
+    {
+      "clientLibraryConfig": {},
+      "projectId": "data-sandbox-warehouse",
+      "region": "asia-southeast1",
+    },
+    "
+        SELECT max(company_id) AS company_id, 
+          max(company_name) AS company_name, 
+          max(company_is_live) AS company_is_live,
+          max(manager_name) AS manager_name, manager_employee_id,
+          max(manager_first_name) AS manager_first_name,
+          max(manager_user_account_id) AS manager_user_account_id,
+          max(manager_email) AS manager_email,
+          IFNULL(sum(weekly_action_completed), 0) AS total_action_completed, 
+          IFNULL(sum(alltime_action_overdue), 0) AS total_action_overdue, 
+          IFNULL(sum(weekly_number_of_new_action_item_created), 0) AS total_new_action,
+          IFNULL(sum(weekly_goal_completed), 0) AS total_goal_completed, 
+          IFNULL(sum(alltime_goal_overdue), 0) AS total_goal_overdue, 
+          IFNULL(sum(weekly_number_of_new_goal_created), 0) AS total_new_goal,
+          FROM \`{{project_id}}.product_dept_talent_mgmt{{region_postfix}}.lxp_email_notification\` 
+          WHERE company_id IN UNNEST(@company_id)
+            AND is_deleted = false
+          GROUP BY  manager_employee_id
+    ",
+    {
+      "company_id": [
+        5,
+      ],
+    },
+  ],
+]
+`;

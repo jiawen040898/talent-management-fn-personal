@@ -1,0 +1,619 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalityScoreService getPersonalityScores should return personality score outcome 1`] = `
+[
+  {
+    "score": 7.451600000000001,
+    "score_dimension": 0,
+    "score_outcome": {
+      "personality_result": [
+        {
+          "domain_alias": "achievement_effort",
+          "domain_score": 0.8229166666666666,
+          "domain_weightage": 0.06271626297577854,
+          "traits": [],
+        },
+        {
+          "domain_alias": "persistence",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.06459054209919263,
+          "traits": [],
+        },
+        {
+          "domain_alias": "initiative",
+          "domain_score": 0.7678571428571429,
+          "domain_weightage": 0.06891580161476356,
+          "traits": [],
+        },
+        {
+          "domain_alias": "leadership",
+          "domain_score": 0.7458333333333333,
+          "domain_weightage": 0.0658881199538639,
+          "traits": [],
+        },
+        {
+          "domain_alias": "cooperation",
+          "domain_score": 0.75,
+          "domain_weightage": 0.06271626297577854,
+          "traits": [],
+        },
+        {
+          "domain_alias": "concern_for_others",
+          "domain_score": 0.625,
+          "domain_weightage": 0.05392156862745098,
+          "traits": [],
+        },
+        {
+          "domain_alias": "social_orientation",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.05521914648212226,
+          "traits": [],
+        },
+        {
+          "domain_alias": "self_control",
+          "domain_score": 0.8375,
+          "domain_weightage": 0.061995386389850055,
+          "traits": [],
+        },
+        {
+          "domain_alias": "stress_tolerance",
+          "domain_score": 0.7291666666666666,
+          "domain_weightage": 0.0651672433679354,
+          "traits": [],
+        },
+        {
+          "domain_alias": "adaptability_flexibility",
+          "domain_score": 0.828125,
+          "domain_weightage": 0.0658881199538639,
+          "traits": [],
+        },
+        {
+          "domain_alias": "dependability",
+          "domain_score": 0.625,
+          "domain_weightage": 0.0658881199538639,
+          "traits": [],
+        },
+        {
+          "domain_alias": "attention_to_detail",
+          "domain_score": 0.625,
+          "domain_weightage": 0.0589677047289504,
+          "traits": [],
+        },
+        {
+          "domain_alias": "integrity",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.06689734717416378,
+          "traits": [],
+        },
+        {
+          "domain_alias": "independence",
+          "domain_score": 0.6666666666666666,
+          "domain_weightage": 0.061995386389850055,
+          "traits": [],
+        },
+        {
+          "domain_alias": "innovation",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.059544405997693194,
+          "traits": [],
+        },
+        {
+          "domain_alias": "analytical_thinking",
+          "domain_score": 0.625,
+          "domain_weightage": 0.05968858131487889,
+          "traits": [],
+        },
+      ],
+    },
+    "score_type": "work_style",
+  },
+  {
+    "score": 6.770722000000001,
+    "score_dimension": 0,
+    "score_outcome": {
+      "personality_result": [
+        {
+          "domain_alias": "achievement",
+          "domain_score": 0.8373015873015873,
+          "domain_weightage": 0.17475409836065575,
+          "traits": [],
+        },
+        {
+          "domain_alias": "independence",
+          "domain_score": 0.6956349206349207,
+          "domain_weightage": 0.1859016393442623,
+          "traits": [],
+        },
+        {
+          "domain_alias": "recognition",
+          "domain_score": 0.7083333333333333,
+          "domain_weightage": 0.15311475409836064,
+          "traits": [],
+        },
+        {
+          "domain_alias": "relationships",
+          "domain_score": 0.545,
+          "domain_weightage": 0.13114754098360656,
+          "traits": [],
+        },
+        {
+          "domain_alias": "support",
+          "domain_score": 0.5861111111111111,
+          "domain_weightage": 0.17475409836065575,
+          "traits": [],
+        },
+        {
+          "domain_alias": "working_conditions",
+          "domain_score": 0.6603174603174603,
+          "domain_weightage": 0.18032786885245902,
+          "traits": [],
+        },
+      ],
+    },
+    "score_type": "work_value",
+  },
+  {
+    "score": 8.5714,
+    "score_dimension": 0,
+    "score_outcome": {
+      "job_codes": [
+        "E",
+        "C",
+        "S",
+      ],
+      "person_codes": [
+        [
+          "S",
+          "C",
+          "E",
+        ],
+      ],
+      "personality_result": [
+        {
+          "domain_alias": "realistic",
+          "domain_score": 0.3125,
+        },
+        {
+          "domain_alias": "investigative",
+          "domain_score": 0.3125,
+        },
+        {
+          "domain_alias": "artistic",
+          "domain_score": 0.28125,
+        },
+        {
+          "domain_alias": "social",
+          "domain_score": 0.8125,
+        },
+        {
+          "domain_alias": "enterprising",
+          "domain_score": 0.71875,
+        },
+        {
+          "domain_alias": "conventional",
+          "domain_score": 0.78125,
+        },
+      ],
+    },
+    "score_type": "work_interest",
+  },
+]
+`;
+
+exports[`PersonalityScoreService getPersonalityScores should throw error when assessment questionnaire framework is not in personality score type 1`] = `"No personality score type found for reasoning_logic from assessment questionnaire framework."`;
+
+exports[`PersonalityScoreService getPersonalityScores should throw error when result raw is empty 1`] = `"domain trait count mismatch"`;
+
+exports[`PersonalityScoreService processWorkInterest should return expected work interest outcome if fit score recipe is empty 1`] = `
+{
+  "score": null,
+  "score_dimension": 0,
+  "score_outcome": {
+    "personality_result": [
+      {
+        "domain_alias": "realistic",
+        "domain_score": 0.3125,
+      },
+      {
+        "domain_alias": "investigative",
+        "domain_score": 0.3125,
+      },
+      {
+        "domain_alias": "artistic",
+        "domain_score": 0.28125,
+      },
+      {
+        "domain_alias": "social",
+        "domain_score": 0.8125,
+      },
+      {
+        "domain_alias": "enterprising",
+        "domain_score": 0.71875,
+      },
+      {
+        "domain_alias": "conventional",
+        "domain_score": 0.78125,
+      },
+    ],
+  },
+  "score_type": "work_interest",
+}
+`;
+
+exports[`PersonalityScoreService processWorkInterest should return expected work interest outcome if fit score recipe is not empty 1`] = `
+{
+  "score": 8.5714,
+  "score_dimension": 0,
+  "score_outcome": {
+    "job_codes": [
+      "E",
+      "C",
+      "S",
+    ],
+    "person_codes": [
+      [
+        "S",
+        "C",
+        "E",
+      ],
+    ],
+    "personality_result": [
+      {
+        "domain_alias": "realistic",
+        "domain_score": 0.3125,
+      },
+      {
+        "domain_alias": "investigative",
+        "domain_score": 0.3125,
+      },
+      {
+        "domain_alias": "artistic",
+        "domain_score": 0.28125,
+      },
+      {
+        "domain_alias": "social",
+        "domain_score": 0.8125,
+      },
+      {
+        "domain_alias": "enterprising",
+        "domain_score": 0.71875,
+      },
+      {
+        "domain_alias": "conventional",
+        "domain_score": 0.78125,
+      },
+    ],
+  },
+  "score_type": "work_interest",
+}
+`;
+
+exports[`PersonalityScoreService processWorkInterest should throw error when result raw is { scores: [] } 1`] = `"domain trait mismatch"`;
+
+exports[`PersonalityScoreService processWorkInterest should throw error when result raw is null 1`] = `"domain trait mismatch"`;
+
+exports[`PersonalityScoreService processWorkInterest should throw error when result raw is undefined 1`] = `"domain trait mismatch"`;
+
+exports[`PersonalityScoreService processWorkStyle should return expected work style outcome if fit score recipe is empty 1`] = `
+{
+  "score": null,
+  "score_dimension": 0,
+  "score_outcome": {
+    "personality_result": [
+      {
+        "domain_alias": "achievement_effort",
+        "domain_score": 0.8229166666666666,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "persistence",
+        "domain_score": 0.8125,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "initiative",
+        "domain_score": 0.7678571428571429,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "leadership",
+        "domain_score": 0.7458333333333333,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "cooperation",
+        "domain_score": 0.75,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "concern_for_others",
+        "domain_score": 0.625,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "social_orientation",
+        "domain_score": 0.8125,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "self_control",
+        "domain_score": 0.8375,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "stress_tolerance",
+        "domain_score": 0.7291666666666666,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "adaptability_flexibility",
+        "domain_score": 0.828125,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "dependability",
+        "domain_score": 0.625,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "attention_to_detail",
+        "domain_score": 0.625,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "integrity",
+        "domain_score": 0.8125,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "independence",
+        "domain_score": 0.6666666666666666,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "innovation",
+        "domain_score": 0.8125,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "analytical_thinking",
+        "domain_score": 0.625,
+        "domain_weightage": null,
+        "traits": [],
+      },
+    ],
+  },
+  "score_type": "work_style",
+}
+`;
+
+exports[`PersonalityScoreService processWorkStyle should return expected work style outcome if fit score recipe is not empty 1`] = `
+{
+  "score": 7.451600000000001,
+  "score_dimension": 0,
+  "score_outcome": {
+    "personality_result": [
+      {
+        "domain_alias": "achievement_effort",
+        "domain_score": 0.8229166666666666,
+        "domain_weightage": 0.06271626297577854,
+        "traits": [],
+      },
+      {
+        "domain_alias": "persistence",
+        "domain_score": 0.8125,
+        "domain_weightage": 0.06459054209919263,
+        "traits": [],
+      },
+      {
+        "domain_alias": "initiative",
+        "domain_score": 0.7678571428571429,
+        "domain_weightage": 0.06891580161476356,
+        "traits": [],
+      },
+      {
+        "domain_alias": "leadership",
+        "domain_score": 0.7458333333333333,
+        "domain_weightage": 0.0658881199538639,
+        "traits": [],
+      },
+      {
+        "domain_alias": "cooperation",
+        "domain_score": 0.75,
+        "domain_weightage": 0.06271626297577854,
+        "traits": [],
+      },
+      {
+        "domain_alias": "concern_for_others",
+        "domain_score": 0.625,
+        "domain_weightage": 0.05392156862745098,
+        "traits": [],
+      },
+      {
+        "domain_alias": "social_orientation",
+        "domain_score": 0.8125,
+        "domain_weightage": 0.05521914648212226,
+        "traits": [],
+      },
+      {
+        "domain_alias": "self_control",
+        "domain_score": 0.8375,
+        "domain_weightage": 0.061995386389850055,
+        "traits": [],
+      },
+      {
+        "domain_alias": "stress_tolerance",
+        "domain_score": 0.7291666666666666,
+        "domain_weightage": 0.0651672433679354,
+        "traits": [],
+      },
+      {
+        "domain_alias": "adaptability_flexibility",
+        "domain_score": 0.828125,
+        "domain_weightage": 0.0658881199538639,
+        "traits": [],
+      },
+      {
+        "domain_alias": "dependability",
+        "domain_score": 0.625,
+        "domain_weightage": 0.0658881199538639,
+        "traits": [],
+      },
+      {
+        "domain_alias": "attention_to_detail",
+        "domain_score": 0.625,
+        "domain_weightage": 0.0589677047289504,
+        "traits": [],
+      },
+      {
+        "domain_alias": "integrity",
+        "domain_score": 0.8125,
+        "domain_weightage": 0.06689734717416378,
+        "traits": [],
+      },
+      {
+        "domain_alias": "independence",
+        "domain_score": 0.6666666666666666,
+        "domain_weightage": 0.061995386389850055,
+        "traits": [],
+      },
+      {
+        "domain_alias": "innovation",
+        "domain_score": 0.8125,
+        "domain_weightage": 0.059544405997693194,
+        "traits": [],
+      },
+      {
+        "domain_alias": "analytical_thinking",
+        "domain_score": 0.625,
+        "domain_weightage": 0.05968858131487889,
+        "traits": [],
+      },
+    ],
+  },
+  "score_type": "work_style",
+}
+`;
+
+exports[`PersonalityScoreService processWorkStyle should throw error when result raw is { scores: [] } 1`] = `"domain trait count mismatch"`;
+
+exports[`PersonalityScoreService processWorkStyle should throw error when result raw is null 1`] = `"domain trait count mismatch"`;
+
+exports[`PersonalityScoreService processWorkStyle should throw error when result raw is undefined 1`] = `"domain trait count mismatch"`;
+
+exports[`PersonalityScoreService processWorkValue should return expected work value outcome if fit score recipe is empty 1`] = `
+{
+  "score": null,
+  "score_dimension": 0,
+  "score_outcome": {
+    "personality_result": [
+      {
+        "domain_alias": "achievement",
+        "domain_score": 0.8373015873015873,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "independence",
+        "domain_score": 0.6956349206349207,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "recognition",
+        "domain_score": 0.7083333333333333,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "relationships",
+        "domain_score": 0.545,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "support",
+        "domain_score": 0.5861111111111111,
+        "domain_weightage": null,
+        "traits": [],
+      },
+      {
+        "domain_alias": "working_conditions",
+        "domain_score": 0.6603174603174603,
+        "domain_weightage": null,
+        "traits": [],
+      },
+    ],
+  },
+  "score_type": "work_value",
+}
+`;
+
+exports[`PersonalityScoreService processWorkValue should return expected work value outcome if fit score recipe is not empty 1`] = `
+{
+  "score": 6.770722000000001,
+  "score_dimension": 0,
+  "score_outcome": {
+    "personality_result": [
+      {
+        "domain_alias": "achievement",
+        "domain_score": 0.8373015873015873,
+        "domain_weightage": 0.17475409836065575,
+        "traits": [],
+      },
+      {
+        "domain_alias": "independence",
+        "domain_score": 0.6956349206349207,
+        "domain_weightage": 0.1859016393442623,
+        "traits": [],
+      },
+      {
+        "domain_alias": "recognition",
+        "domain_score": 0.7083333333333333,
+        "domain_weightage": 0.15311475409836064,
+        "traits": [],
+      },
+      {
+        "domain_alias": "relationships",
+        "domain_score": 0.545,
+        "domain_weightage": 0.13114754098360656,
+        "traits": [],
+      },
+      {
+        "domain_alias": "support",
+        "domain_score": 0.5861111111111111,
+        "domain_weightage": 0.17475409836065575,
+        "traits": [],
+      },
+      {
+        "domain_alias": "working_conditions",
+        "domain_score": 0.6603174603174603,
+        "domain_weightage": 0.18032786885245902,
+        "traits": [],
+      },
+    ],
+  },
+  "score_type": "work_value",
+}
+`;
+
+exports[`PersonalityScoreService processWorkValue should throw error when result raw is { scores: [] } 1`] = `"domain trait count mismatch"`;
+
+exports[`PersonalityScoreService processWorkValue should throw error when result raw is null 1`] = `"domain trait count mismatch"`;
+
+exports[`PersonalityScoreService processWorkValue should throw error when result raw is undefined 1`] = `"domain trait count mismatch"`;

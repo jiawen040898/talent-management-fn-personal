@@ -1,0 +1,45 @@
+name: WC Deploy to Env
+on:
+    workflow_call:
+        inputs:
+            environment:
+                required: true
+                type: string
+            ref:
+                required: true
+                type: string
+        secrets:
+            AWS_ACCOUNT_ID:
+                required: true
+            SLACK_BOT_RELEASE_WEBHOOK:
+                required: true
+            NPM_TOKEN:
+                required: true
+
+jobs:
+    deploy-to-env:
+        runs-on: ubuntu-latest
+        environment:
+            name: ${{ inputs.environment }}
+        steps:
+            - name: Checkout Source Code
+              uses: actions/checkout@v4
+              with:
+                  persist-credentials: false
+                  ref: ${{ inputs.ref }}
+
+            - name: Deploy AWS Lambda
+              uses: Pulsifi/github-template/deploy-nodejs-serverless-v4@master
+              with:
+                  AWS_ENVIRONMENT: ${{ vars.AWS_ENVIRONMENT }}
+                  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+                  AWS_REGION: ${{ vars.AWS_REGION }}
+                  AWS_ASSUMED_ROLE: ${{ vars.AWS_ASSUMED_ROLE }}
+                  SLACK_BOT_RELEASE_WEBHOOK: ${{ secrets.SLACK_BOT_RELEASE_WEBHOOK }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Add deployment summary
+              uses: Pulsifi/github-template/generate-deployment-summary@master
+              with:
+                  ENVIRONMENT: '${{ vars.AWS_ENVIRONMENT }} (${{ vars.AWS_REGION }})'
+                  REF: ${{ inputs.ref }}

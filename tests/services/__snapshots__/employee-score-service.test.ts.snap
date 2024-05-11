@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[employeeScoreService] should pass processCognitive 1`] = `
+[
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": 0,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 13.043478260869565,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "numeric",
+        "domain_percentile": null,
+        "domain_score": 0.13043478260869565,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "reasoning_numeric",
+    "updated_by": 1,
+  },
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": 2,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 26.666666666666668,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "verbal",
+        "domain_percentile": null,
+        "domain_score": 0.26666666666666666,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "reasoning_verbal",
+    "updated_by": 1,
+  },
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": 1,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 27.77777777777778,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "logical",
+        "domain_percentile": null,
+        "domain_score": 0.2777777777777778,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "reasoning_logical",
+    "updated_by": 1,
+  },
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": undefined,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 22.49597423510467,
+    "score_dimension": 0,
+    "score_outcome": {
+      "cognitive_result": {
+        "domain_alias": "reasoning_average",
+        "domain_percentile": null,
+        "domain_score": 0.22495974235104668,
+        "ingredient_weightage": null,
+      },
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "reasoning_average",
+    "updated_by": 1,
+  },
+]
+`;
+
+exports[`[employeeScoreService] should pass processPersonalityScore 1`] = `
+[
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": 3,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 7.451600000000001,
+    "score_dimension": 0,
+    "score_outcome": {
+      "personality_result": [
+        {
+          "domain_alias": "achievement_effort",
+          "domain_score": 0.8229166666666666,
+          "domain_weightage": 0.06271626297577854,
+          "traits": [],
+        },
+        {
+          "domain_alias": "persistence",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.06459054209919263,
+          "traits": [],
+        },
+        {
+          "domain_alias": "initiative",
+          "domain_score": 0.7678571428571429,
+          "domain_weightage": 0.06891580161476356,
+          "traits": [],
+        },
+        {
+          "domain_alias": "leadership",
+          "domain_score": 0.7458333333333333,
+          "domain_weightage": 0.0658881199538639,
+          "traits": [],
+        },
+        {
+          "domain_alias": "cooperation",
+          "domain_score": 0.75,
+          "domain_weightage": 0.06271626297577854,
+          "traits": [],
+        },
+        {
+          "domain_alias": "concern_for_others",
+          "domain_score": 0.625,
+          "domain_weightage": 0.05392156862745098,
+          "traits": [],
+        },
+        {
+          "domain_alias": "social_orientation",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.05521914648212226,
+          "traits": [],
+        },
+        {
+          "domain_alias": "self_control",
+          "domain_score": 0.8375,
+          "domain_weightage": 0.061995386389850055,
+          "traits": [],
+        },
+        {
+          "domain_alias": "stress_tolerance",
+          "domain_score": 0.7291666666666666,
+          "domain_weightage": 0.0651672433679354,
+          "traits": [],
+        },
+        {
+          "domain_alias": "adaptability_flexibility",
+          "domain_score": 0.828125,
+          "domain_weightage": 0.0658881199538639,
+          "traits": [],
+        },
+        {
+          "domain_alias": "dependability",
+          "domain_score": 0.625,
+          "domain_weightage": 0.0658881199538639,
+          "traits": [],
+        },
+        {
+          "domain_alias": "attention_to_detail",
+          "domain_score": 0.625,
+          "domain_weightage": 0.0589677047289504,
+          "traits": [],
+        },
+        {
+          "domain_alias": "integrity",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.06689734717416378,
+          "traits": [],
+        },
+        {
+          "domain_alias": "independence",
+          "domain_score": 0.6666666666666666,
+          "domain_weightage": 0.061995386389850055,
+          "traits": [],
+        },
+        {
+          "domain_alias": "innovation",
+          "domain_score": 0.8125,
+          "domain_weightage": 0.059544405997693194,
+          "traits": [],
+        },
+        {
+          "domain_alias": "analytical_thinking",
+          "domain_score": 0.625,
+          "domain_weightage": 0.05968858131487889,
+          "traits": [],
+        },
+      ],
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "work_style",
+    "updated_by": 1,
+  },
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": 4,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 6.770722000000001,
+    "score_dimension": 0,
+    "score_outcome": {
+      "personality_result": [
+        {
+          "domain_alias": "achievement",
+          "domain_score": 0.8373015873015873,
+          "domain_weightage": 0.17475409836065575,
+          "traits": [],
+        },
+        {
+          "domain_alias": "independence",
+          "domain_score": 0.6956349206349207,
+          "domain_weightage": 0.1859016393442623,
+          "traits": [],
+        },
+        {
+          "domain_alias": "recognition",
+          "domain_score": 0.7083333333333333,
+          "domain_weightage": 0.15311475409836064,
+          "traits": [],
+        },
+        {
+          "domain_alias": "relationships",
+          "domain_score": 0.545,
+          "domain_weightage": 0.13114754098360656,
+          "traits": [],
+        },
+        {
+          "domain_alias": "support",
+          "domain_score": 0.5861111111111111,
+          "domain_weightage": 0.17475409836065575,
+          "traits": [],
+        },
+        {
+          "domain_alias": "working_conditions",
+          "domain_score": 0.6603174603174603,
+          "domain_weightage": 0.18032786885245902,
+          "traits": [],
+        },
+      ],
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "work_value",
+    "updated_by": 1,
+  },
+  {
+    "created_by": 1,
+    "employee_id": "00000000-0000-0000-0000-000000000001",
+    "id": 5,
+    "participant_id": "00000000-0000-0000-0000-000000000001",
+    "score": 8.5714,
+    "score_dimension": 0,
+    "score_outcome": {
+      "job_codes": [
+        "E",
+        "C",
+        "S",
+      ],
+      "person_codes": [
+        [
+          "S",
+          "C",
+          "E",
+        ],
+      ],
+      "personality_result": [
+        {
+          "domain_alias": "realistic",
+          "domain_score": 0.3125,
+        },
+        {
+          "domain_alias": "investigative",
+          "domain_score": 0.3125,
+        },
+        {
+          "domain_alias": "artistic",
+          "domain_score": 0.28125,
+        },
+        {
+          "domain_alias": "social",
+          "domain_score": 0.8125,
+        },
+        {
+          "domain_alias": "enterprising",
+          "domain_score": 0.71875,
+        },
+        {
+          "domain_alias": "conventional",
+          "domain_score": 0.78125,
+        },
+      ],
+    },
+    "score_recipe_id": "00000000-0000-0000-0000-000000000001",
+    "score_type": "work_interest",
+    "updated_by": 1,
+  },
+]
+`;
