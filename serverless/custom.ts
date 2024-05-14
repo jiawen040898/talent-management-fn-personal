@@ -10,6 +10,7 @@ export const custom: Custom = {
         packageManager: 'yarn',
         layersDeploymentBucket:
             'pulsifi-${opt:stage}-${opt:region}-layers-deployment-bucket-1',
+        dependenciesPath: './layer/nodejs/package.json',
     },
     prune: {
         automatic: true,

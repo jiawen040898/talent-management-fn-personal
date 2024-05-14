@@ -74,7 +74,46 @@ export const main = {
             serverSideEncryption: 'AES256',
         },
     },
-
+    resources: {
+        extensions: {
+            ProcessDomainEventLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            EmployeeDailyReminderCronJobLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessWeeklyManagerSubordinateProgressReportLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackCycleActionLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackCycleReminderLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackRecommendationGenerationInitializeRequestLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackRecommendationGenerationProcessRequestLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackRecommendationGenerationRequestLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackRecommendationGenerationEndedRequestLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            ProcessFeedbackDashboardProvisionLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            HandleProcessEmployeeAssessmentScoreLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+            HandleProcessEmployeeFitScoreLogGroup: {
+                DeletionPolicy: 'Retain',
+            },
+        },
+    },
     plugins,
     custom,
     functions,

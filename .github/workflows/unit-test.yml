@@ -22,3 +22,12 @@ jobs:
               with:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GENERATE_TEST_REPORT: true
+
+            - name: Test Report
+              continue-on-error: true
+              uses: dorny/test-reporter@v1
+              if: ${{ always() }}
+              with:
+                  name: test-results
+                  path: coverage/jest-junit.xml
+                  reporter: jest-junit

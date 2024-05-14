@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@google-cloud/bigquery": "7.3.0",
+    "@middy/do-not-wait-for-empty-event-loop": "4.7.0",
+    "@pulsifi/fn": "3.0.6",
+    "axios": "1.6.7",
+    "exponential-backoff": "3.1.1",
+    "liquidjs": "10.8.4",
+    "murmurhash": "2.0.0",
+    "pg": "8.11.3",
+    "typeorm": "0.3.17",
+    "unleash-client": "5.5.1"
+  }
+}
