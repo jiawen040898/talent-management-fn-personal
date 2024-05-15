@@ -1,2 +1,2 @@
-export * from './environment-variable.util';
+export * from './config.util';
 export * from './esbuild/esbuild-bundling.util';

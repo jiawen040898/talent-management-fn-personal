@@ -36,7 +36,7 @@ import { StringListParameter, StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 
 import { ResourceTag } from '../constants';
-import { BuildScriptProvider, environmentVariableUtil } from '../utils';
+import { BuildScriptProvider, configUtil } from '../utils';
 import { environment, version } from '../variables';
 
 /**
@@ -137,10 +137,7 @@ export class BaseFunction extends Construct {
             runtime: Runtime.NODEJS_20_X,
             memorySize: 256,
             timeout: Duration.seconds(30),
-            environment: environmentVariableUtil.getEnvironmentVariables(
-                scope,
-                environment,
-            ),
+            environment: configUtil.getEnvironmentVariables(scope, environment),
             role: iamRole,
             paramsAndSecrets: ParamsAndSecretsLayerVersion.fromVersion(
                 ParamsAndSecretsVersions.V1_0_103,

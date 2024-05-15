@@ -1,12 +1,15 @@
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import type { Construct } from 'constructs';
 
+import { CommonCDKEnvironmentVariables } from '../interfaces';
 import { accountId, environment, region } from '../variables';
 
-export const commonEnvVariables = (scope: Construct) => ({
+export const commonEnvironmentVariables = (
+    scope: Construct,
+): CommonCDKEnvironmentVariables => ({
     NODE_ENV: environment,
     SENTRY_DSN:
-        'https://ab994d3b0e374c8a83ef95055069d63b@o157451.ingest.sentry.io/6531328',
+        'https://d6994d3b0e374c8a83ef95055069d63b@o157451.ingest.sentry.io/6531328',
     SERVERLESS_STAGE: environment,
     SM_NAME: 'talent-management-postgresql-credential',
     REDIS_SM_NAME: 'redis-credentials',

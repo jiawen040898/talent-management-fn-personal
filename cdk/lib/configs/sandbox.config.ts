@@ -1,9 +1,10 @@
 import { Construct } from 'constructs';
 
-import { commonEnvVariables } from './common-env-variables';
+import { CDKEnvironmentVariables } from '../interfaces';
+import { commonEnvironmentVariables } from './common.config';
 
-export const envVariables = (scope: Construct) => ({
-    ...commonEnvVariables(scope),
+export const config = (scope: Construct): CDKEnvironmentVariables => ({
+    ...commonEnvironmentVariables(scope),
     GCP_CLIENT_LIBRARY_CONFIG: JSON.stringify({
         audience:
             '//iam.googleapis.com/projects/564311958262/locations/global/workloadIdentityPools/aws-sandbox/providers/pulsifi-aws-sandbox',
