@@ -1,6 +1,6 @@
 import { Duration } from 'aws-cdk-lib';
 import { Schedule } from 'aws-cdk-lib/aws-events';
-import { Function as AwsLambdaFunction } from 'aws-cdk-lib/aws-lambda';
+import type { Function as AwsLambdaFunction } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 import { BaseFunction } from '../base';
@@ -39,8 +39,22 @@ export class FunctionGroupResources extends Construct {
     /**
      * FunctionGroupResources
      *
+     * @public employeeDailyReminderCronJob {@link AwsLambdaFunction}
+     * @public talentManagementProcessDomainEventFn {@link AwsLambdaFunction}
+     * @public talentManagementProcessEmployeeAssessmentScoreFn {@link AwsLambdaFunction}
+     * @public talentManagementProcessEmployeeFitScoreFn {@link AwsLambdaFunction}
+     * @public talentManagementFeedbackDashboardProvisionFn {@link AwsLambdaFunction}
+     * @public talentManagementProcessFeedbackCycleActionFn {@link AwsLambdaFunction}
+     * @public talentManagementProcessFeedbackCycleReminderFn {@link AwsLambdaFunction}
+     * @public processFeedbackRecommendationEndedRequest {@link AwsLambdaFunction}
+     * @public talentManagementFeedbackRecommendationInitializeRequestFn {@link AwsLambdaFunction}
+     * @public talentManagementFeedbackRecommendationProcessRequestFn {@link AwsLambdaFunction}
+     * @public talentManagementFeedbackRecommendationGenerationRequestFn {@link AwsLambdaFunction}
+     * @public talentManagementProcWeeklyManagerProgressReportFn {@link AwsLambdaFunction}
+     *
      * @param scope {@link Construct}
      * @param id
+     * @param props {@link FunctionGroupResourcesProps}
      */
     constructor(
         scope: Construct,
@@ -79,7 +93,7 @@ export class FunctionGroupResources extends Construct {
                 functionName: 'talent-management-processDomainEvent-fn',
                 description: `Process SQS messages from Talent Management Domain Queue (v${version})`,
                 entry: 'src/functions/process-domain-event.ts',
-                // reservedConcurrentExecutions: 40,
+                reservedConcurrentExecutions: 40,
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
@@ -102,7 +116,7 @@ export class FunctionGroupResources extends Construct {
                         'talent-management-process-employee-assessment-score-fn',
                     description: `Process SQS messages to calculate assessment score then store into db and send assessment calculated event (v${version})`,
                     entry: 'src/functions/process-employee-assessment-score.ts',
-                    // reservedConcurrentExecutions: 20,
+                    reservedConcurrentExecutions: 20,
                     isLogGroupExists: true,
                     iamRole:
                         props.iamRoleGroupResources.talentManagementLambdaRole,
@@ -127,7 +141,7 @@ export class FunctionGroupResources extends Construct {
                 functionName: 'talent-management-process-employee-fit-score-fn',
                 description: `Process SQS messages to calculate fit score then store into db (v${version})`,
                 entry: 'src/functions/process-employee-fit-score.ts',
-                // reservedConcurrentExecutions: 20,
+                reservedConcurrentExecutions: 20,
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],

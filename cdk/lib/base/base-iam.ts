@@ -1,13 +1,13 @@
 import {
     CustomIamPolicyConstruct,
     CustomIamRoleConstruct,
-    CustomIamRoleProps,
+    type CustomIamRoleProps,
     PulsifiTeam,
 } from '@pulsifi/custom-aws-cdk-lib';
 import { Tags } from 'aws-cdk-lib';
-import {
-    type IManagedPolicy,
-    type IRole,
+import type {
+    IManagedPolicy,
+    IRole,
     PolicyStatement,
 } from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
@@ -25,6 +25,16 @@ type BaseProps = {
 
 export class BaseIAM extends Construct {
     public readonly role: IRole;
+
+    /**
+     * BaseIAM
+     *
+     * @public role {@link IRole}
+     *
+     * @param scope {@link Construct}
+     * @param id
+     * @param props {@link Base}
+     */
     constructor(scope: Construct, id: string, props: BaseProps) {
         super(scope, id);
 
@@ -44,23 +54,27 @@ export class BaseIAM extends Construct {
         Tags.of(role).add('Type', ResourceTag.IAM);
 
         /* custom policies */
-        props.customPolicies?.forEach((customPolicy) => {
-            new CustomIamPolicyConstruct(
-                this,
-                `${customPolicy.policyName}-policy`,
-                {
-                    roles: [role.iamRole],
-                    resourceName: customPolicy.policyName,
-                    awsEnvironment: environment,
-                    resourceOwner: PulsifiTeam.ENGINEERING,
-                    statements: customPolicy.statements,
-                },
-            );
-        });
+        if (props.customPolicies) {
+            for (const customPolicy of props.customPolicies) {
+                new CustomIamPolicyConstruct(
+                    this,
+                    `${customPolicy.policyName}`,
+                    {
+                        roles: [role.iamRole],
+                        resourceName: customPolicy.policyName,
+                        awsEnvironment: environment,
+                        resourceOwner: PulsifiTeam.ENGINEERING,
+                        statements: customPolicy.statements,
+                    },
+                );
+            }
+        }
 
         /* managed policies */
-        props.managedPolicies?.forEach((managedPolicy) => {
-            role.iamRole.addManagedPolicy(managedPolicy);
-        });
+        if (props.managedPolicies) {
+            for (const managedPolicy of props.managedPolicies) {
+                role.iamRole.addManagedPolicy(managedPolicy);
+            }
+        }
     }
 }

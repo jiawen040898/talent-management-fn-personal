@@ -2,7 +2,7 @@ import { DefinitionBody } from 'aws-cdk-lib/aws-stepfunctions';
 import { Construct } from 'constructs';
 
 import { BaseStepFunction } from '../../base';
-import { FunctionGroupResources } from '../functions';
+import type { FunctionGroupResources } from '../functions';
 import type { IAMRoleGroupResources } from '../iam/iam-roles';
 import { feedbackRecommendationDefinitionBody } from './feedback-recommendation-generator';
 

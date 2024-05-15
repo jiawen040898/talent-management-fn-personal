@@ -1,6 +1,6 @@
 import {
     CustomSqsPairConstruct,
-    CustomSqsProps,
+    type CustomSqsProps,
     PulsifiTeam,
 } from '@pulsifi/custom-aws-cdk-lib';
 import { Tags } from 'aws-cdk-lib';
@@ -8,9 +8,9 @@ import { AnyPrincipal, Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import {
     SqsSubscription,
-    SqsSubscriptionProps,
+    type SqsSubscriptionProps,
 } from 'aws-cdk-lib/aws-sns-subscriptions';
-import { Queue } from 'aws-cdk-lib/aws-sqs';
+import type { Queue } from 'aws-cdk-lib/aws-sqs';
 import { Construct } from 'constructs';
 
 import { ResourceTag } from '../constants';
@@ -44,6 +44,16 @@ export class BaseSQS extends Construct {
     public readonly mainSQS: Queue;
     private readonly sqsPair: CustomSqsPairConstruct;
 
+    /**
+     * BaseSQS
+     *
+     * @public mainSQS {@link Queue}
+     * @public sqsPair {@link CustomSqsPairConstruct}
+     *
+     * @param scope {@link Construct}
+     * @param id
+     * @param props {@link BaseSQSProps}
+     */
     constructor(scope: Construct, id: string, props: BaseSQSProps) {
         super(scope, id);
 
@@ -78,12 +88,14 @@ export class BaseSQS extends Construct {
 
             this.sqsPair.mainSqs.addToResourcePolicy(sqsPolicyStatement);
 
-            props.snsSubscriptions.forEach((subscription) => {
-                this.addSnsSubscription(
-                    subscription.topicArn,
-                    subscription.subscriptionFilterPolicy,
-                );
-            });
+            if (props.snsSubscriptions) {
+                for (const subscription of props.snsSubscriptions) {
+                    this.addSnsSubscription(
+                        subscription.topicArn,
+                        subscription.subscriptionFilterPolicy,
+                    );
+                }
+            }
         }
     }
 

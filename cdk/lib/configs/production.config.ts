@@ -1,8 +1,9 @@
-import { Construct } from 'constructs';
+import type { Construct } from 'constructs';
 
+import { CDKEnvironmentVariables } from '../interfaces';
 import { commonEnvironmentVariables } from './common.config';
 
-export const config = (scope: Construct) => ({
+export const config = (scope: Construct): CDKEnvironmentVariables => ({
     ...commonEnvironmentVariables(scope),
     GCP_CLIENT_LIBRARY_CONFIG: JSON.stringify({
         type: 'external_account',

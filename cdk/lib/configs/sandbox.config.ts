@@ -1,4 +1,4 @@
-import { Construct } from 'constructs';
+import type { Construct } from 'constructs';
 
 import { CDKEnvironmentVariables } from '../interfaces';
 import { commonEnvironmentVariables } from './common.config';

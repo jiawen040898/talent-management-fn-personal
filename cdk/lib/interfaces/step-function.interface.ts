@@ -1,5 +1,5 @@
 /* Reference: https://gist.github.com/zirkelc/084fcec40849e4189749fd9076d5350c */
-import { IRole } from 'aws-cdk-lib/aws-iam';
+import type { IRole } from 'aws-cdk-lib/aws-iam';
 
 import type { FunctionGroupResources } from '../resources/functions';
 
@@ -236,7 +236,7 @@ interface Wait extends StateBase {
 }
 
 type Catcher = {
-    ErrorEquals: ErrorName[];
+    ErrorEquals: ErrorName[] | string[];
     Next: string;
     ResultPath?: string;
 };
@@ -255,5 +255,4 @@ type ErrorName =
     | 'States.Runtime'
     | 'States.Timeout'
     | 'States.TaskFailed'
-    | 'States.Permissions'
-    | string;
+    | 'States.Permissions';

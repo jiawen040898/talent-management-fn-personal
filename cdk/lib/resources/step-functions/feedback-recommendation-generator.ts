@@ -7,11 +7,11 @@ import {
     Wait,
     WaitTime,
 } from 'aws-cdk-lib/aws-stepfunctions';
-import { Construct } from 'constructs';
+import type { Construct } from 'constructs';
 
 import { BaseStepFunction } from '../../base';
 import { accountId, region } from '../../variables';
-import { FunctionGroupResources } from '../functions';
+import type { FunctionGroupResources } from '../functions';
 
 export const feedbackRecommendationDefinitionBody = (
     scope: Construct,

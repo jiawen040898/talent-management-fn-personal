@@ -13,8 +13,8 @@ import {
     type Size,
     Tags,
 } from 'aws-cdk-lib';
-import { SecurityGroup, Subnet, Vpc } from 'aws-cdk-lib/aws-ec2';
-import { Rule, RuleProps } from 'aws-cdk-lib/aws-events';
+import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
+import { Rule, type RuleProps } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import type { IRole } from 'aws-cdk-lib/aws-iam';
 import {
@@ -28,11 +28,11 @@ import {
 } from 'aws-cdk-lib/aws-lambda';
 import {
     SqsEventSource,
-    SqsEventSourceProps,
+    type SqsEventSourceProps,
 } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { type ILogGroup, LogGroup } from 'aws-cdk-lib/aws-logs';
-import { IQueue } from 'aws-cdk-lib/aws-sqs';
-import { StringListParameter, StringParameter } from 'aws-cdk-lib/aws-ssm';
+import type { IQueue } from 'aws-cdk-lib/aws-sqs';
+import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 
 import { ResourceTag } from '../constants';
@@ -148,18 +148,6 @@ export class BaseFunction extends Construct {
             vpc: Vpc.fromLookup(scope, `${id}-vpc`, {
                 vpcId: StringParameter.valueFromLookup(scope, '/configs/VPCID'),
             }),
-            vpcSubnets: {
-                subnets: StringListParameter.valueForTypedListParameter(
-                    scope,
-                    '/configs/VPC_PRIVATE_SUBNET_IDS',
-                ).map((subnetId, index) =>
-                    Subnet.fromSubnetId(
-                        scope,
-                        `${id}-subnet-id-${index}`,
-                        subnetId,
-                    ),
-                ),
-            },
             securityGroups: [
                 SecurityGroup.fromSecurityGroupId(
                     scope,
@@ -221,14 +209,20 @@ export class BaseFunction extends Construct {
         });
 
         /* lambda triggers */
-        sqsEventSources?.forEach((eventSource) =>
-            this.addSqsEventSource(
-                eventSource.queue,
-                eventSource.sqsEventSourceProps,
-            ),
-        );
+        if (sqsEventSources) {
+            for (const eventSource of sqsEventSources) {
+                this.addSqsEventSource(
+                    eventSource.queue,
+                    eventSource.sqsEventSourceProps,
+                );
+            }
+        }
 
-        eventRules?.forEach((rule) => this.addEventRule(rule));
+        if (eventRules) {
+            for (const rule of eventRules) {
+                this.addEventRule(rule);
+            }
+        }
     }
 
     private addEventRule(ruleProps: RuleProps) {

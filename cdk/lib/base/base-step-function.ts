@@ -6,15 +6,15 @@ import {
 import { Tags } from 'aws-cdk-lib';
 import {
     CustomState,
-    CustomStateProps,
+    type CustomStateProps,
     LogLevel,
     StateMachine,
-    StateMachineProps,
+    type StateMachineProps,
 } from 'aws-cdk-lib/aws-stepfunctions';
-import { Construct } from 'constructs';
+import type { Construct } from 'constructs';
 
 import { ResourceTag } from '../constants';
-import { States } from '../interfaces';
+import type { States } from '../interfaces';
 import { environment } from '../variables';
 
 interface BaseStateMachineProps extends StateMachineProps {
@@ -22,6 +22,14 @@ interface BaseStateMachineProps extends StateMachineProps {
 }
 
 export class BaseStepFunction extends StateMachine {
+    /**
+     *
+     * BaseStepFunction
+     *
+     * @param scope {@link Construct}
+     * @param id
+     * @param props {@link BaseStateMachineProps}
+     */
     constructor(scope: Construct, id: string, props: BaseStateMachineProps) {
         /* Step Function State Machine Log Group */
         const stepFunctionLogGroup = new CustomStateMachineLogGroupConstruct(
