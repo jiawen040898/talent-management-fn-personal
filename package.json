@@ -22,7 +22,7 @@
         "constructs": "10.3.0",
         "aws-cdk": "2.139.0",
         "aws-cdk-lib": "2.139.0",
-        "@pulsifi/custom-aws-cdk-lib": "1.12.4",
+        "@pulsifi/custom-aws-cdk-lib": "1.13.1",
         "@biomejs/biome": "1.7.3",
         "@mrgrain/cdk-esbuild": "5.1.0",
         "esbuild-node-externals": "1.13.1",

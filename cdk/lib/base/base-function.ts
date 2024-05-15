@@ -148,6 +148,7 @@ export class BaseFunction extends Construct {
             vpc: Vpc.fromLookup(scope, `${id}-vpc`, {
                 vpcId: StringParameter.valueFromLookup(scope, '/configs/VPCID'),
             }),
+            allowPublicSubnet: true,
             securityGroups: [
                 SecurityGroup.fromSecurityGroupId(
                     scope,

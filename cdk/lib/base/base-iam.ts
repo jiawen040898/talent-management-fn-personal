@@ -58,7 +58,7 @@ export class BaseIAM extends Construct {
             for (const customPolicy of props.customPolicies) {
                 new CustomIamPolicyConstruct(
                     this,
-                    `${customPolicy.policyName}`,
+                    `${customPolicy.policyName}-policy`,
                     {
                         roles: [role.iamRole],
                         resourceName: customPolicy.policyName,
