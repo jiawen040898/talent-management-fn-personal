@@ -1,7 +1,10 @@
+import { DefinitionBody } from 'aws-cdk-lib/aws-stepfunctions';
 import { Construct } from 'constructs';
 
-import type { IAMRoleGroupResources } from '../iam';
-import { FeedbackRecommendationGeneratorResource } from './feedback-recommendation-generator';
+import { BaseStepFunction } from '../../base';
+import { FunctionGroupResources } from '../functions';
+import type { IAMRoleGroupResources } from '../iam/iam-roles';
+import { feedbackRecommendationDefinitionBody } from './feedback-recommendation-generator';
 
 /**
  * StepFunctionGroupResourcesProps
@@ -10,6 +13,7 @@ import { FeedbackRecommendationGeneratorResource } from './feedback-recommendati
  */
 type StepFunctionGroupResourcesProps = {
     iamRoleGroupResources: IAMRoleGroupResources;
+    functionGroupResources: FunctionGroupResources;
 };
 
 export class StepFunctionGroupResources extends Construct {
@@ -27,13 +31,15 @@ export class StepFunctionGroupResources extends Construct {
     ) {
         super(scope, id);
 
-        new FeedbackRecommendationGeneratorResource(
-            this,
-            'feedback-recommendation-generator-resource',
-            {
-                iamRole:
-                    props.iamRoleGroupResources.talentManagementFeedbackFnRole,
-            },
-        );
+        new BaseStepFunction(this, 'feedback-recommendation-generator', {
+            stateMachineName: 'feedback-recommendation-generator',
+            definitionBody: DefinitionBody.fromChainable(
+                feedbackRecommendationDefinitionBody(
+                    this,
+                    props.functionGroupResources,
+                ),
+            ),
+            role: props.iamRoleGroupResources.talentManagementFeedbackFnRole,
+        });
     }
 }

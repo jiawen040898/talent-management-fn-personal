@@ -1,10 +1,10 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
-import { LambdaGroupResources } from './resources/functions';
-import { IAMRoleGroupResources } from './resources/iam';
+import { FunctionGroupResources } from './resources/functions';
+import { IAMRoleGroupResources } from './resources/iam/iam-roles';
 import { LayerGroupResources } from './resources/layers';
-import { SQSGroupResources } from './resources/sqs';
+import SQSGroupResources from './resources/sqs';
 import { StepFunctionGroupResources } from './resources/step-functions';
 
 export class MainStack extends Stack {
@@ -37,7 +37,7 @@ export class MainStack extends Stack {
         );
 
         /* LAMBDA */
-        const lambdaGroupResources = new LambdaGroupResources(
+        const functionGroupResources = new FunctionGroupResources(
             this,
             'lambda-group-resources',
             {
@@ -48,17 +48,19 @@ export class MainStack extends Stack {
         );
 
         /* STEP FUNCTION */
-        const stepFunctionGroup = new StepFunctionGroupResources(
+        const stepFunctionGroupResources = new StepFunctionGroupResources(
             this,
             'step-function-group-resources',
             {
-                iamRoleGroupResources,
+                iamRoleGroupResources: iamRoleGroupResources,
+                functionGroupResources: functionGroupResources,
             },
         );
 
-        lambdaGroupResources.node.addDependency(iamRoleGroupResources);
-        lambdaGroupResources.node.addDependency(sqsGroupResources);
-        lambdaGroupResources.node.addDependency(layerGroupResources);
-        stepFunctionGroup.node.addDependency(iamRoleGroupResources);
+        functionGroupResources.node.addDependency(iamRoleGroupResources);
+        functionGroupResources.node.addDependency(sqsGroupResources);
+        functionGroupResources.node.addDependency(layerGroupResources);
+        stepFunctionGroupResources.node.addDependency(iamRoleGroupResources);
+        stepFunctionGroupResources.node.addDependency(functionGroupResources);
     }
 }

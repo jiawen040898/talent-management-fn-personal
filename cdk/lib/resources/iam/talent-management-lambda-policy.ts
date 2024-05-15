@@ -1,6 +1,6 @@
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
-import { accountId } from '../../../variables';
+import { accountId } from '../../variables';
 
 const parameterStorePermissions = new PolicyStatement({
     actions: [

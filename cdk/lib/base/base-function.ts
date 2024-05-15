@@ -14,6 +14,8 @@ import {
     Tags,
 } from 'aws-cdk-lib';
 import { SecurityGroup, Subnet, Vpc } from 'aws-cdk-lib/aws-ec2';
+import { Rule, RuleProps } from 'aws-cdk-lib/aws-events';
+import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import type { IRole } from 'aws-cdk-lib/aws-iam';
 import {
     Function as AwsFunctionLambda,
@@ -24,7 +26,12 @@ import {
     Runtime,
     type Version,
 } from 'aws-cdk-lib/aws-lambda';
+import {
+    SqsEventSource,
+    SqsEventSourceProps,
+} from 'aws-cdk-lib/aws-lambda-event-sources';
 import { type ILogGroup, LogGroup } from 'aws-cdk-lib/aws-logs';
+import { IQueue } from 'aws-cdk-lib/aws-sqs';
 import { StringListParameter, StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 
@@ -38,7 +45,7 @@ import { environment, version } from '../variables';
  * @param from
  * @param to
  */
-export type BundlingAssets = {
+type BundlingAssets = {
     from: string[];
     to: string[];
 };
@@ -60,7 +67,7 @@ export type BundlingAssets = {
  * @optional ephemeralStorageSize
  * @optional memorySize
  */
-export type CustomFunctionProps = {
+type CustomFunctionProps = {
     functionName: string;
     description: string;
     entry: string;
@@ -75,14 +82,20 @@ export type CustomFunctionProps = {
     ephemeralStorageSize?: Size;
     memorySize?: number;
     reservedConcurrentExecutions?: number;
+    sqsEventSources?: {
+        queue: IQueue;
+        sqsEventSourceProps?: SqsEventSourceProps;
+    }[];
+    eventRules?: RuleProps[];
 };
 
-export class BaseLambda extends Construct {
+export class BaseFunction extends Construct {
     public readonly lambda: AwsFunctionLambda;
     public readonly lambdaVersion: Version;
+    private eventRuleCount = 1;
 
     /**
-     * BaseLambda
+     * BaseFunction
      *
      * @public lambda
      * @public lambdaVersion
@@ -94,7 +107,7 @@ export class BaseLambda extends Construct {
     constructor(scope: Construct, id: string, props: CustomFunctionProps) {
         super(scope, id);
 
-        const { iamRole, ...lambdaProps } = props;
+        const { iamRole, sqsEventSources, eventRules, ...lambdaProps } = props;
 
         /* log group */
         let logGroup: ILogGroup;
@@ -209,5 +222,34 @@ export class BaseLambda extends Construct {
             awsEnvironment: environment,
             resourceOwner: PulsifiTeam.ENGINEERING,
         });
+
+        /* lambda triggers */
+        sqsEventSources?.forEach((eventSource) =>
+            this.addSqsEventSource(
+                eventSource.queue,
+                eventSource.sqsEventSourceProps,
+            ),
+        );
+
+        eventRules?.forEach((rule) => this.addEventRule(rule));
+    }
+
+    private addEventRule(ruleProps: RuleProps) {
+        const eventRule = new Rule(
+            this,
+            `${this.node.id}-event-rule-${this.eventRuleCount}`,
+            ruleProps,
+        );
+
+        eventRule.addTarget(new LambdaFunction(this.lambda));
+        this.eventRuleCount++;
+
+        return this;
+    }
+
+    private addSqsEventSource(queue: IQueue, props?: SqsEventSourceProps) {
+        this.lambda.addEventSource(new SqsEventSource(queue, props));
+
+        return this;
     }
 }

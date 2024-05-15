@@ -1,13 +1,11 @@
 /* Reference: https://gist.github.com/zirkelc/084fcec40849e4189749fd9076d5350c */
 import { IRole } from 'aws-cdk-lib/aws-iam';
-import type { Serverless } from 'serverless/aws';
+
+import type { FunctionGroupResources } from '../resources/functions';
 
 export interface StepFunctionResourceProps {
     iamRole: IRole;
-}
-
-export interface CustomServerless extends Serverless {
-    stepFunctions?: StepFunction;
+    functionGroupResources: FunctionGroupResources;
 }
 
 export interface StepFunction {
@@ -35,7 +33,13 @@ type Definition = {
     States: States;
 };
 
-export type States = Choice | Fail | Map | Task | Parallel | Pass | Wait;
+type StateTypes = Choice | Fail | Map | Task | Parallel | Pass | Wait;
+
+export type States =
+    | {
+          [state: string]: StateTypes;
+      }
+    | StateTypes;
 
 type StateBase = {
     Catch?: Catcher[];
@@ -140,6 +144,7 @@ interface Map extends StateBase {
     ItemBatcher?: ItemBatcher;
     ItemReader?: ItemReader;
     MaxConcurrency?: number;
+    ToleratedFailureCount?: number;
 }
 
 interface ItemProcessor {

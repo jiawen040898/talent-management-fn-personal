@@ -1,6 +1,4 @@
-import { StepFunction } from './interfaces/step-function.interface';
-
-export const stepFunctions: StepFunction = {
+export const stepFunctions = {
     stateMachines: {
         feedbackRecommendationGenerator: {
             name: 'feedbackRecommendationGenerator',
