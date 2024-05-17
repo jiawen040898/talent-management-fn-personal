@@ -22,4 +22,6 @@ export const config = (scope: Construct): CDKEnvironmentVariables => ({
         token_url: 'https://sts.googleapis.com/v1/token',
         type: 'external_account',
     }),
+    RECOMMENDATION_API_URL:
+        'https://pulsifi-dev--action-recommendation-app.modal.run',
 });

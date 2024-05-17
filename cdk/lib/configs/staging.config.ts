@@ -22,4 +22,6 @@ export const config = (scope: Construct): CDKEnvironmentVariables => ({
                 'https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15',
         },
     }),
+    RECOMMENDATION_API_URL:
+        'https://pulsifi-dev--action-recommendation-app.modal.run',
 });

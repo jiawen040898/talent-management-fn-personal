@@ -15,7 +15,6 @@ export type CommonCDKEnvironmentVariables = {
     PULSIFI_ASSETS_DOMAIN: string;
     GCP_PROJECT_ID: string;
     GCP_REGION: string;
-    RECOMMENDATION_API_URL: string;
     RECOMMENDATION_STATE_MACHINE_ARN: string;
     UNLEASH_API_KEY: string;
     UNLEASH_API_URL: string;
@@ -25,4 +24,5 @@ export type CommonCDKEnvironmentVariables = {
 
 export type CDKEnvironmentVariables = {
     GCP_CLIENT_LIBRARY_CONFIG: string;
+    RECOMMENDATION_API_URL: string;
 } & CommonCDKEnvironmentVariables;

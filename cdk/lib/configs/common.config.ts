@@ -17,7 +17,7 @@ export const commonEnvironmentVariables = (
     AUTH0_SM_NAME: 'talent-management-auth0-m2m-credentials',
     AWS_ALB_DNS: StringParameter.valueForStringParameter(
         scope,
-        '/configs/api/AWS_ALB_BASE_DNS',
+        '/configs/AWS_ALB_BASE_DNS',
     ),
     AUTH0_ENTERPRISE_DOMAIN: StringParameter.valueForStringParameter(
         scope,
@@ -47,10 +47,6 @@ export const commonEnvironmentVariables = (
     GCP_REGION: StringParameter.valueForStringParameter(
         scope,
         '/configs/GCP_REGION',
-    ),
-    RECOMMENDATION_API_URL: StringParameter.valueForStringParameter(
-        scope,
-        '/talent-management-fn/RECOMMENDATION_API_URL',
     ),
     RECOMMENDATION_STATE_MACHINE_ARN: `arn:aws:states:${region}:${accountId}:stateMachine:feedback-recommendation-generator`,
     UNLEASH_API_KEY: StringParameter.valueForStringParameter(
