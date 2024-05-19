@@ -4,7 +4,12 @@ import {
     PulsifiTeam,
 } from '@pulsifi/custom-aws-cdk-lib';
 import { Tags } from 'aws-cdk-lib';
-import { AnyPrincipal, Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
+import {
+    AnyPrincipal,
+    Effect,
+    PolicyStatement,
+    PolicyStatementProps,
+} from 'aws-cdk-lib/aws-iam';
 import { Topic } from 'aws-cdk-lib/aws-sns';
 import {
     SqsSubscription,
@@ -32,8 +37,11 @@ import { environment } from '../variables';
  * @optional timeout
  * @optional ephemeralStorageSize
  * @optional memorySize
+ * @optional accessPolicyStatements
+ * @optional snsSubscriptions
  */
 type BaseSQSProps = {
+    accessPolicyStatements?: PolicyStatementProps[];
     snsSubscriptions?: {
         topicArn: string;
         subscriptionFilterPolicy?: SqsSubscriptionProps;
@@ -70,7 +78,7 @@ export class BaseSQS extends Construct {
 
         /* add sns subscriptions to queue */
         if (props.snsSubscriptions?.length) {
-            /* queue policy */
+            /* default queue policy */
             const sqsPolicyStatement = new PolicyStatement({
                 effect: Effect.ALLOW,
                 principals: [new AnyPrincipal()],
@@ -88,13 +96,23 @@ export class BaseSQS extends Construct {
 
             this.sqsPair.mainSqs.addToResourcePolicy(sqsPolicyStatement);
 
-            if (props.snsSubscriptions) {
-                for (const subscription of props.snsSubscriptions) {
-                    this.addSnsSubscription(
-                        subscription.topicArn,
-                        subscription.subscriptionFilterPolicy,
-                    );
-                }
+            /* add sns subscriptions & filter policy */
+            for (const subscription of props.snsSubscriptions) {
+                this.addSnsSubscription(
+                    subscription.topicArn,
+                    subscription.subscriptionFilterPolicy,
+                );
+            }
+        }
+
+        /* queue policy */
+        if (props.accessPolicyStatements?.length) {
+            for (const policyStatement of props.accessPolicyStatements) {
+                const policy = new PolicyStatement({
+                    resources: [this.sqsPair.mainSqs.queueArn],
+                    ...policyStatement,
+                });
+                this.sqsPair.mainSqs.addToResourcePolicy(policy);
             }
         }
     }

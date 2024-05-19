@@ -43,7 +43,7 @@ export const main = {
             REDIS_SM_NAME: 'redis-credentials',
             REGION: '${aws:region}',
             AUTH0_SM_NAME: 'talent-management-auth0-m2m-credentials',
-            AWS_ALB_DNS: '${ssm:/configs/AWS_ALB_BASE_DNS}',
+            AWS_ALB_DNS: '${ssm:/configs/api/AWS_ALB_BASE_DNS}',
             AUTH0_ENTERPRISE_DOMAIN:
                 '${ssm:/configs/api/AUTH0_ENTERPRISE_DOMAIN}',
             AUTH0_ENTERPRISE_API_AUDIENCE:

@@ -23,5 +23,5 @@ export const config = (scope: Construct): CDKEnvironmentVariables => ({
         },
     }),
     RECOMMENDATION_API_URL:
-        'https://pulsifi-dev--action-recommendation-app.modal.run',
+        'https://pulsifi-production--action-recommendation-app.modal.run',
 });
