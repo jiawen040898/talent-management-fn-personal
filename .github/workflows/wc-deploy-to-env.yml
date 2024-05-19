@@ -29,6 +29,7 @@ jobs:
                   ref: ${{ inputs.ref }}
 
             - name: Deploy AWS Lambda
+              if: vars.DEPLOYMENT_TYPE != 'cdk'
               uses: Pulsifi/github-template/deploy-nodejs-serverless-v4@master
               with:
                   AWS_ENVIRONMENT: ${{ vars.AWS_ENVIRONMENT }}
@@ -37,6 +38,25 @@ jobs:
                   AWS_ASSUMED_ROLE: ${{ vars.AWS_ASSUMED_ROLE }}
                   SLACK_BOT_RELEASE_WEBHOOK: ${{ secrets.SLACK_BOT_RELEASE_WEBHOOK }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Generate build tag
+              if: vars.DEPLOYMENT_TYPE == 'cdk'
+              id: configure_build_tag
+              uses: Pulsifi/github-template/configure-build-tag@master
+
+            - name: Yarn CDK deploy
+              if: vars.DEPLOYMENT_TYPE == 'cdk'
+              uses: Pulsifi/github-template/yarn-cdk-deploy@master
+              with:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  SLACK_BOT_RELEASE_WEBHOOK: ${{ secrets.SLACK_BOT_RELEASE_WEBHOOK }}
+                  AWS_ASSUMED_ROLE: ${{ vars.AWS_ASSUMED_ROLE }}
+                  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+                  AWS_ENVIRONMENT: ${{ vars.AWS_ENVIRONMENT }}
+                  AWS_REGION: ${{ vars.AWS_REGION }}
+                  BRANCH_REF: ${{ inputs.ref }}
+                  PRUNE_LAYER: 'true'
+                  BUILD_TAG: ${{ steps.configure_build_tag.outputs.BUILD_TAG }}
 
             - name: Add deployment summary
               uses: Pulsifi/github-template/generate-deployment-summary@master

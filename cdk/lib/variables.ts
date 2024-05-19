@@ -4,7 +4,7 @@ import {
     PulsifiUtils,
 } from '@pulsifi/custom-aws-cdk-lib';
 
-export const version = process.env.TAG_VERSION as string;
+export const version = process.env.BUILD_TAG as string;
 export const environment: AwsEnvironment = new PulsifiUtils().getAwsEnvironment(
     `${process.env.NODE_ENV}`,
 );
