@@ -25,7 +25,7 @@ export const feedbackRecommendationDefinitionBody = (
             Type: 'Task',
             Resource: 'arn:aws:states:::aws-sdk:sfn:listExecutions',
             Parameters: {
-                StateMachineArn: `arn:aws:states:${region}:${accountId}:stateMachine:feedback-recommendation-generator`,
+                StateMachineArn: `arn:aws:states:${region}:${accountId}:stateMachine:feedbackRecommendationGenerator`,
                 StatusFilter: 'RUNNING',
             },
             ResultPath: '$.StateInfo',

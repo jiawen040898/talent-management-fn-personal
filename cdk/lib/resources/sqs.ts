@@ -40,7 +40,6 @@ export default class SQSGroupResources extends Construct {
             {
                 sqsName: 'talent-management-assessment-score',
                 fifo: true,
-                isDlq: false,
                 snsSubscriptions: [
                     {
                         topicArn: `arn:aws:sns:${region}:${accountId}:talent-management-domain-topic.fifo`,
@@ -64,7 +63,6 @@ export default class SQSGroupResources extends Construct {
             {
                 sqsName: 'talent-management-domain',
                 fifo: true,
-                isDlq: false,
                 snsSubscriptions: [
                     {
                         topicArn: `arn:aws:sns:${region}:${accountId}:identity-topic.fifo`,
@@ -88,7 +86,6 @@ export default class SQSGroupResources extends Construct {
             {
                 sqsName: 'talent-management-fit-score',
                 fifo: true,
-                isDlq: false,
                 snsSubscriptions: [
                     {
                         topicArn: `arn:aws:sns:${region}:${accountId}:talent-management-domain-topic.fifo`,
@@ -112,7 +109,6 @@ export default class SQSGroupResources extends Construct {
             {
                 sqsName: 'talent-management-feedback-dashboard-provision',
                 fifo: false,
-                isDlq: false,
                 deliveryDelayInSeconds: 600,
                 visibilityTimeoutInSeconds: 300,
                 snsSubscriptions: [
@@ -138,7 +134,6 @@ export default class SQSGroupResources extends Construct {
             {
                 sqsName: 'talent-management-feedback-cycle-action',
                 fifo: false,
-                isDlq: false,
                 snsSubscriptions: [
                     {
                         topicArn: `arn:aws:sns:${region}:${accountId}:identity-company-cron-topic`,
@@ -160,7 +155,6 @@ export default class SQSGroupResources extends Construct {
             {
                 sqsName: 'talent-management-feedback-cycle-reminder',
                 fifo: false,
-                isDlq: false,
                 snsSubscriptions: [
                     {
                         topicArn: `arn:aws:sns:${region}:${accountId}:identity-company-cron-topic`,
@@ -184,7 +178,6 @@ export default class SQSGroupResources extends Construct {
                     sqsName:
                         'talent-management-feedback-recommendation-generation-initialize',
                     fifo: true,
-                    isDlq: false,
                     visibilityTimeoutInSeconds: 60,
                     deliveryDelayInSeconds: 30,
                     snsSubscriptions: [
@@ -214,7 +207,6 @@ export default class SQSGroupResources extends Construct {
                     sqsName:
                         'talent-management-lxp-manager-subordinate-progress-report',
                     fifo: false,
-                    isDlq: false,
                     snsSubscriptions: [
                         {
                             topicArn: `arn:aws:sns:${region}:${accountId}:identity-company-cron-topic`,

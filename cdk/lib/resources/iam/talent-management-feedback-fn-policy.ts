@@ -61,7 +61,7 @@ const stepFunctionBasicPermissions = new PolicyStatement({
     actions: ['states:StartExecution', 'states:StopExecution'],
     effect: Effect.ALLOW,
     resources: [
-        `arn:aws:states:*:${accountId}:stateMachine:feedback-recommendation-generator`,
+        `arn:aws:states:*:${accountId}:stateMachine:feedbackRecommendationGenerator`,
     ],
     sid: 'StateMachinePermissions',
 });

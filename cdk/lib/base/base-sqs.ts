@@ -1,8 +1,8 @@
 import {
     CustomSqsPairConstruct,
-    type CustomSqsProps,
     PulsifiTeam,
 } from '@pulsifi/custom-aws-cdk-lib';
+import { type CustomSqsPairProps } from '@pulsifi/custom-aws-cdk-lib/sqs-pair';
 import { Tags } from 'aws-cdk-lib';
 import {
     AnyPrincipal,
@@ -46,7 +46,7 @@ type BaseSQSProps = {
         topicArn: string;
         subscriptionFilterPolicy?: SqsSubscriptionProps;
     }[];
-} & Omit<CustomSqsProps, 'awsEnvironment' | 'resourceOwner'>;
+} & Omit<CustomSqsPairProps, 'awsEnvironment' | 'resourceOwner'>;
 
 export class BaseSQS extends Construct {
     public readonly mainSQS: Queue;

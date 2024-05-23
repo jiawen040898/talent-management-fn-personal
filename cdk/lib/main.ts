@@ -4,6 +4,7 @@ import type { Construct } from 'constructs';
 import { FunctionGroupResources } from './resources/functions';
 import { IAMRoleGroupResources } from './resources/iam/iam-roles';
 import { LayerGroupResources } from './resources/layers';
+import { SecurityGroupResources } from './resources/security-groups';
 import SQSGroupResources from './resources/sqs';
 import { StepFunctionGroupResources } from './resources/step-functions';
 
@@ -24,6 +25,12 @@ export class MainStack extends Stack {
             'iam-role-group-resources',
         );
 
+        /* SECURITY GROUP */
+        const securityGroupResources = new SecurityGroupResources(
+            this,
+            'security-group-resources',
+        );
+
         /* SQS */
         const sqsGroupResources = new SQSGroupResources(
             this,
@@ -39,11 +46,12 @@ export class MainStack extends Stack {
         /* LAMBDA */
         const functionGroupResources = new FunctionGroupResources(
             this,
-            'lambda-group-resources',
+            'function-group-resources',
             {
                 iamRoleGroupResources: iamRoleGroupResources,
                 layerGroupResources: layerGroupResources,
                 sqsGroupResources: sqsGroupResources,
+                securityGroupResources: securityGroupResources,
             },
         );
 
@@ -59,6 +67,7 @@ export class MainStack extends Stack {
 
         functionGroupResources.node.addDependency(iamRoleGroupResources);
         functionGroupResources.node.addDependency(sqsGroupResources);
+        functionGroupResources.node.addDependency(securityGroupResources);
         functionGroupResources.node.addDependency(layerGroupResources);
         stepFunctionGroupResources.node.addDependency(iamRoleGroupResources);
         stepFunctionGroupResources.node.addDependency(functionGroupResources);

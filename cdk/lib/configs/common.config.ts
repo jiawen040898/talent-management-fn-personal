@@ -48,7 +48,7 @@ export const commonEnvironmentVariables = (
         scope,
         '/configs/GCP_REGION',
     ),
-    RECOMMENDATION_STATE_MACHINE_ARN: `arn:aws:states:${region}:${accountId}:stateMachine:feedback-recommendation-generator`,
+    RECOMMENDATION_STATE_MACHINE_ARN: `arn:aws:states:${region}:${accountId}:stateMachine:feedbackRecommendationGenerator`,
     UNLEASH_API_KEY: StringParameter.valueForStringParameter(
         scope,
         '/configs/UNLEASH_API_KEY',

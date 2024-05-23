@@ -13,7 +13,6 @@ import {
     type Size,
     Tags,
 } from 'aws-cdk-lib';
-import { SecurityGroup, Vpc } from 'aws-cdk-lib/aws-ec2';
 import { Rule, type RuleProps } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import type { IRole } from 'aws-cdk-lib/aws-iam';
@@ -32,7 +31,6 @@ import {
 } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { type ILogGroup, LogGroup } from 'aws-cdk-lib/aws-logs';
 import type { IQueue } from 'aws-cdk-lib/aws-sqs';
-import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 
 import { ResourceTag } from '../constants';
@@ -58,6 +56,7 @@ type BundlingAssets = {
  * @param entry
  * @param iamRole
  * @param layers
+ * @param securityGroup
  * @optional isLogGroupExists
  * @optional handler
  * @optional runtime
@@ -72,6 +71,7 @@ type CustomFunctionProps = {
     description: string;
     entry: string;
     iamRole: IRole;
+    securityGroup: CustomSecurityGroupConstruct;
     layers: LayerVersion[];
     isLogGroupExists?: boolean;
     handler?: string;
@@ -107,7 +107,13 @@ export class BaseFunction extends Construct {
     constructor(scope: Construct, id: string, props: CustomFunctionProps) {
         super(scope, id);
 
-        const { iamRole, sqsEventSources, eventRules, ...lambdaProps } = props;
+        const {
+            iamRole,
+            sqsEventSources,
+            eventRules,
+            securityGroup,
+            ...lambdaProps
+        } = props;
 
         /* log group */
         let logGroup: ILogGroup;
@@ -145,20 +151,9 @@ export class BaseFunction extends Construct {
             currentVersionOptions: {
                 removalPolicy: RemovalPolicy.RETAIN,
             },
-            vpc: Vpc.fromLookup(scope, `${id}-vpc`, {
-                vpcId: StringParameter.valueFromLookup(scope, '/configs/VPCID'),
-            }),
             allowPublicSubnet: true,
-            securityGroups: [
-                SecurityGroup.fromSecurityGroupId(
-                    scope,
-                    `${id}-security-group`,
-                    StringParameter.valueFromLookup(
-                        scope,
-                        '/talent-management-fn/VPC_SECURITY_GROUP_IDS',
-                    ),
-                ),
-            ],
+            vpc: securityGroup.vpc,
+            securityGroups: [securityGroup.securityGroup],
             ...lambdaProps,
             code: new TypeScriptCode(props.entry, {
                 buildProvider: new BuildScriptProvider(
@@ -200,13 +195,6 @@ export class BaseFunction extends Construct {
             awsEnvironment: environment,
             resourceOwner: PulsifiTeam.ENGINEERING,
             lambda: this.lambda,
-        });
-
-        /* lambda security group */
-        new CustomSecurityGroupConstruct(this, `${id}-security-group`, {
-            resourceName: props.functionName,
-            awsEnvironment: environment,
-            resourceOwner: PulsifiTeam.ENGINEERING,
         });
 
         /* lambda triggers */

@@ -7,6 +7,7 @@ import { BaseFunction } from '../base';
 import { environment, version } from '../variables';
 import type { IAMRoleGroupResources } from './iam/iam-roles';
 import type { LayerGroupResources } from './layers';
+import { SecurityGroupResources } from './security-groups';
 import type SQSGroupResources from './sqs';
 
 /**
@@ -15,11 +16,14 @@ import type SQSGroupResources from './sqs';
  * @param iamRoleGroupResources {@link IAMRoleGroupResources}
  * @param sqsGroupResources {@link SQSGroupResources}
  * @param layerGroupResources {@link LayerGroupResources}
+ * @param securityGroupResources {@link SecurityGroupResources}
+ *
  */
 type FunctionGroupResourcesProps = {
     iamRoleGroupResources: IAMRoleGroupResources;
     sqsGroupResources: SQSGroupResources;
     layerGroupResources: LayerGroupResources;
+    securityGroupResources: SecurityGroupResources;
 };
 
 export class FunctionGroupResources extends Construct {
@@ -74,6 +78,7 @@ export class FunctionGroupResources extends Construct {
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
                 eventRules: [
                     {
                         schedule: Schedule.expression(
@@ -97,6 +102,7 @@ export class FunctionGroupResources extends Construct {
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
                 sqsEventSources: [
                     {
                         queue: props.sqsGroupResources
@@ -121,6 +127,7 @@ export class FunctionGroupResources extends Construct {
                     iamRole:
                         props.iamRoleGroupResources.talentManagementLambdaRole,
                     layers: [props.layerGroupResources.talentManagementFnLayer],
+                    securityGroup: props.securityGroupResources.securityGroup,
                     sqsEventSources: [
                         {
                             queue: props.sqsGroupResources
@@ -145,6 +152,7 @@ export class FunctionGroupResources extends Construct {
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
                 sqsEventSources: [
                     {
                         queue: props.sqsGroupResources
@@ -169,6 +177,7 @@ export class FunctionGroupResources extends Construct {
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
                 timeout: Duration.seconds(300),
                 sqsEventSources: [
                     {
@@ -189,6 +198,7 @@ export class FunctionGroupResources extends Construct {
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
                 sqsEventSources: [
                     {
                         queue: props.sqsGroupResources
@@ -210,6 +220,7 @@ export class FunctionGroupResources extends Construct {
                 isLogGroupExists: true,
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
                 sqsEventSources: [
                     {
                         queue: props.sqsGroupResources
@@ -233,6 +244,7 @@ export class FunctionGroupResources extends Construct {
                 timeout: Duration.seconds(45),
                 iamRole: props.iamRoleGroupResources.talentManagementLambdaRole,
                 layers: [props.layerGroupResources.talentManagementFnLayer],
+                securityGroup: props.securityGroupResources.securityGroup,
             },
         ).lambda;
 
@@ -249,6 +261,7 @@ export class FunctionGroupResources extends Construct {
                     iamRole:
                         props.iamRoleGroupResources.talentManagementLambdaRole,
                     layers: [props.layerGroupResources.talentManagementFnLayer],
+                    securityGroup: props.securityGroupResources.securityGroup,
                     sqsEventSources: [
                         {
                             queue: props.sqsGroupResources
@@ -275,6 +288,7 @@ export class FunctionGroupResources extends Construct {
                     iamRole:
                         props.iamRoleGroupResources.talentManagementLambdaRole,
                     layers: [props.layerGroupResources.talentManagementFnLayer],
+                    securityGroup: props.securityGroupResources.securityGroup,
                 },
             ).lambda;
 
@@ -292,6 +306,7 @@ export class FunctionGroupResources extends Construct {
                     iamRole:
                         props.iamRoleGroupResources.talentManagementLambdaRole,
                     layers: [props.layerGroupResources.talentManagementFnLayer],
+                    securityGroup: props.securityGroupResources.securityGroup,
                 },
             ).lambda;
 
@@ -308,6 +323,7 @@ export class FunctionGroupResources extends Construct {
                     iamRole:
                         props.iamRoleGroupResources.talentManagementLambdaRole,
                     layers: [props.layerGroupResources.talentManagementFnLayer],
+                    securityGroup: props.securityGroupResources.securityGroup,
                     sqsEventSources: [
                         {
                             queue: props.sqsGroupResources

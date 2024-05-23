@@ -32,7 +32,7 @@ export class StepFunctionGroupResources extends Construct {
         super(scope, id);
 
         new BaseStepFunction(this, 'feedback-recommendation-generator', {
-            stateMachineName: 'feedback-recommendation-generator',
+            stateMachineName: 'feedbackRecommendationGenerator',
             definitionBody: DefinitionBody.fromChainable(
                 feedbackRecommendationDefinitionBody(
                     this,
